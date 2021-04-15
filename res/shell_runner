@@ -1,0 +1,11 @@
+#!/bin/bash
+
+IFS=$'\n\t'
+set -euo pipefail
+
+trap 'echo "\$ $BASH_COMMAND"' DEBUG
+
+INPUT="$(cat /dev/stdin)"
+echo "$INPUT"
+OUTPUT="$(echo "$INPUT" | env NAME="World" envsubst)"
+echo "$OUTPUT"
