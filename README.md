@@ -1,4 +1,4 @@
-# Basic Test
+# remark-unixpipe
 
 **remark-unixpipe** will, for a [Code Block](https://github.com/syntax-tree/mdast#code) with the `lang` "unixpipe", pipe it's body through the command specified in it's `meta`.
 
