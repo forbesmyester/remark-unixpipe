@@ -2,19 +2,27 @@
 
 **remark-unixpipe** will, for a [Code Block](https://github.com/syntax-tree/mdast#code) with the `lang` "unixpipe", pipe it's body through the command specified in it's `meta`.
 
-This means the following code:
+## This means the following code:
+
+    This is above
 
     ```unixpipe env PUNCTUATION="!" ./res/shell_runner | sed 's/^/    /'
     Hello ${NAME}${PUNCTUATION}
     ```
 
-Results in:
+    This is below
+
+## Results in:
+
+This is above
 
 ```unixpipe env PUNCTUATION="!" ./res/shell_runner | sed 's/^/    /'
 Hello ${NAME}${PUNCTUATION}
 ```
 
-When the contents of `./res/shell_runner` is
+This is below
+
+## When the contents of `./res/shell_runner` is:
 
 ```unixpipe cat ./res/shell_runner | sed 's/^/    /'
 ```
