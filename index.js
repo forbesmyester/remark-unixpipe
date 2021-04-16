@@ -98,11 +98,11 @@ function unixpipe(options) {
 
         mapLimit(
             tree.children,
-            options.concurrency || 3,
+            (options || {}).concurrency || 3,
             handleRootNode,
             (err, newChildrens) => {
                 if (err) {
-                    if (!options.errorsInDocument) {
+                    if (!(options || {}).errorsInDocument) {
                         return next(err);
                     }
                     newChildrens = [[ debugWrapper(err) ]];
