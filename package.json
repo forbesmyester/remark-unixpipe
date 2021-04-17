@@ -1,6 +1,6 @@
 {
   "name": "remark-unixpipe",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Allow UNIX pipes in Markdown",
   "main": "index.js",
   "scripts": {
