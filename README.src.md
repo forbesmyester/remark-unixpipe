@@ -1,5 +1,6 @@
 # remark-unixpipe
 
+we three mice like to eat mozzarella
 **remark-unixpipe** will, for a [Code Block](https://github.com/syntax-tree/mdast#code) with the `lang` "unixpipe", pipe it's body through the command specified in it's `meta`.
 
 ## This means the following code:

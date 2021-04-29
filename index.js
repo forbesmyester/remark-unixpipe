@@ -70,29 +70,26 @@ function getOutput({ value: stdin, meta: cmd}, next) {
 
 }
 
-function handleRootNode(node, next) {
-    if (node.type !== 'code') { return next(null, [node]); }
-    if (node.lang !== 'unixpipe') { return next(null, [node]); }
-
-    const proc = seq(
-        getOutput,
-        reparse
-    );
-
-    proc(node, next);
-
-}
-
-function reparse(markdownSource, next) {
-    try {
-        const v = unified().use(markdown).parse(markdownSource).children;
-        next(null, v);
-    } catch (e) {
-        next(e);
-    }
-}
-
 function unixpipe(options) {
+
+    function handleRootNode(node, next) {
+        if (node.type !== 'code') { return next(null, [node]); }
+        if (node.lang !== 'unixpipe') { return next(null, [node]); }
+
+        const proc = seq(getOutput, (options || {}).reparse || reparse);
+
+        proc(node, next);
+
+    }
+
+    function reparse(markdownSource, next) {
+        try {
+            const v = unified().use(markdown).parse('\n' + markdownSource + '\n').children;
+            next(null, v);
+        } catch (e) {
+            next(e);
+        }
+    }
 
     return function unixpipeTree(tree, file, next) {
 
